@@ -8,7 +8,7 @@ DROP TABLE IF EXISTS titles;
 DROP TABLE IF EXISTS departments;
 
 CREATE TABLE "titles" (
-    "title_id" INTEGER PRIMARY KEY NOT NULL,
+    "title_id" VARCHAR(30) PRIMARY KEY NOT NULL,
     "title" VARCHAR(30) NOT NULL
 );
 
@@ -29,15 +29,17 @@ CREATE TABLE "departments" (
 );
 
 CREATE TABLE "dept_emp" (
-    "emp_no" INTEGER PRIMARY KEY NOT NULL,
+    "emp_no" INTEGER NOT NULL,
     "dept_no" VARCHAR(30) NOT NULL,
+	PRIMARY KEY ("emp_no", "dept_no"),
     foreign key (emp_no) references employees (emp_no),
 	foreign key (dept_no) references departments (dept_no)
 );
 
 CREATE TABLE "dept_manager" (
-    "dept_no" VARCHAR(30) PRIMARY KEY NOT NULL,
+    "dept_no" VARCHAR(30) NOT NULL,
     "emp_no" INTEGER NOT NULL,
+	PRIMARY KEY ("emp_no", "dept_no"),
 	foreign key (emp_no) references employees (emp_no),
 	foreign key (dept_no) references departments (dept_no)
 );
