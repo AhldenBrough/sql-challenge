@@ -27,13 +27,18 @@ FROM employees
 WHERE first_name LIKE 'Hercules' AND last_name LIKE 'B%';
 
 -- List each employee in the Sales department, including their employee number, last name, and first name.
-SELECT departments.dept_name, dept_emp.emp_no, employees.last_name, employees.first_name
+SELECT dept_emp.emp_no, employees.last_name, employees.first_name
 FROM employees
 INNER JOIN dept_emp ON employees.emp_no = dept_emp.emp_no
 INNER JOIN departments ON dept_emp.dept_no = departments.dept_no
 WHERE departments.dept_name LIKE 'Sales';
 
 -- List each employee in the Sales and Development departments, including their employee number, last name, first name, and department name.
+SELECT dept_emp.emp_no, employees.last_name, employees.first_name, departments.dept_name
+FROM employees
+INNER JOIN dept_emp ON employees.emp_no = dept_emp.emp_no
+INNER JOIN departments ON dept_emp.dept_no = departments.dept_no
+WHERE departments.dept_name LIKE 'Sales' OR departments.dept_name LIKE 'Development';
 
 -- List the frequency counts, in descending order, of all the employee last names (that is, how many employees share each last name).
 
