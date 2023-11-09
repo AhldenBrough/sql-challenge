@@ -4,7 +4,10 @@ FROM employees
 INNER JOIN salaries ON employees.emp_no = salaries.emp_no;
 
 -- List the first name, last name, and hire date for the employees who were hired in 1986.
-SELECT
+--https://stackoverflow.com/questions/9891025/sql-select-from-column-where-year-2010
+SELECT first_name, last_name, hire_date 
+FROM employees 
+WHERE hire_date >= '1986-01-01' and hire_date < '1987-01-01';
 
 -- List the manager of each department along with their department number, department name, employee number, last name, and first name.
 
